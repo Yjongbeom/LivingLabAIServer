@@ -1,5 +1,5 @@
 """
-URL configuration for GuchungAIServer project.
+URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from GuchungAIServer.views import AIResponseView, AIColumnsView
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/get-ai-column-response/', AIColumnsView.as_view(), name='get-ai-column-response'),
+    path('api/get-ai-response/', AIResponseView.as_view(), name='ai_response'),
 ]
