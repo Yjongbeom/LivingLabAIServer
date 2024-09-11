@@ -13,10 +13,8 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 model.eval()
 
-PROMPT = '''You are a helpful AI assistant. Please answer the user's questions kindly. 당신은 유능한 AI 어시스턴트 입니다. 사용자의 질문에 대해 친절하게 답변해주세요.'''
-
-
 class AIColumnsView(APIView):
+    """텍스트에서 열 제목을 추출하여 반환하는 API"""
     def post(self, request):
         try:
             text = request.data.get('text')
@@ -60,6 +58,7 @@ class AIColumnsView(APIView):
 
 
 class AIResponseView(APIView):
+    """텍스트와 열 정보를 기반으로 표 데이터를 추출하는 API"""
     def post(self, request):
         try:
             text = request.data.get('text')
